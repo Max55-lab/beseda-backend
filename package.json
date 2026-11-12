@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Backend for Beseda dialect dictionary (shared data, accounts, moderation)",
   "main": "server.js",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "start": "node server.js",
     "seed": "node seed.mjs",

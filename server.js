@@ -166,12 +166,18 @@ app.get("/api/health", (req, res) => res.json({ ok: true, service: "beseda-backe
 
 const frontendPath = require("fs").existsSync(path.join(__dirname, "public", "index.html"))
   ? path.join(__dirname, "public")
-  : path.join(__dirname, "..", "beseda", "dist");
-app.use(express.static(frontendPath));
-app.use((req, res) => {
-  if (req.path.startsWith("/api")) return res.status(404).json({ error: "not found" });
-  res.sendFile(path.join(frontendPath, "index.html"));
-});
+  : (require("fs").existsSync(path.join(__dirname, "..", "beseda", "dist", "index.html"))
+      ? path.join(__dirname, "..", "beseda", "dist")
+      : null);
+if (frontendPath) {
+  app.use(express.static(frontendPath));
+  app.use((req, res) => {
+    if (req.path.startsWith("/api")) return res.status(404).json({ error: "not found" });
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => res.json({ service: "beseda-backend", status: "ok" }));
+}
 
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => console.log(`Beseda backend running on http://localhost:${PORT}`));

@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: beseda
+    name: beseda-api
     runtime: node
     plan: free
-    buildCommand: cd ../beseda && npm install && npm run build && cd ../beseda-backend && npm install
+    buildCommand: npm install
     startCommand: node server.js
     envVars:
       - key: NODE_ENV
