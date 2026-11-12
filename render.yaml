@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: beseda
+    runtime: node
+    plan: free
+    buildCommand: cd ../beseda && npm install && npm run build && cd ../beseda-backend && npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: /data/beseda.db
+    disk:
+      name: beseda-data
+      mountPath: /data
+      sizeGB: 1
