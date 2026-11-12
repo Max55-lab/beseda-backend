@@ -180,4 +180,16 @@ if (frontendPath) {
 }
 
 const PORT = process.env.PORT || 3002;
+// auto-seed if DB is empty (for free tier without persistent disk)
+if (process.env.AUTO_SEED === "true") {
+  try {
+    const count = db.prepare("SELECT COUNT(*) AS c FROM words").get().c;
+    if (count === 0) {
+      console.log("Auto-seeding database...");
+      require("child_process").execSync("node seed.mjs", { stdio: "inherit" });
+    }
+  } catch (e) {
+    console.error("Auto-seed error:", e.message);
+  }
+}
 app.listen(PORT, () => console.log(`Beseda backend running on http://localhost:${PORT}`));
