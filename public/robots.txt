@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://beseda.onrender.com/sitemap.xml
