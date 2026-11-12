@@ -1,0 +1,20 @@
+{
+  "app_title": "Beseda — dialect dictionary",
+  "app_subtitle": "Audio dictionary of Croatian local dialects",
+  "nav_home": "Home", "nav_map": "Map", "nav_dict": "Dictionary", "nav_compare": "Compare",
+  "nav_quiz": "Quiz", "nav_flashcards": "Flashcards", "nav_collections": "Collections",
+  "nav_stats": "Statistics", "nav_data": "Data", "nav_community": "Community",
+  "nav_add": "Add word", "nav_standard": "Standard dictionary",
+  "home_title": "Dialect dictionary", "home_lead": "Every word has its place, its voice, and its story.",
+  "search_placeholder": "Search word, village or term…", "search_btn": "Search",
+  "word_of_day": "Word of the day", "listen": "Listen", "meaning": "Meaning",
+  "example": "Example", "standard": "Standard", "english": "English",
+  "source": "Source", "check": "Check", "save": "Save", "delete": "Delete",
+  "loading": "Loading…", "no_words": "No words.", "error": "Error",
+  "welcome_title": "Welcome to Beseda", "welcome_subtitle": "Choose your native language",
+  "tutorial_skip": "Skip", "tutorial_next": "Next", "tutorial_done": "Start",
+  "tut1_title": "Dictionary", "tut1_text": "Search a word, listen, read meaning.",
+  "tut2_title": "Map", "tut2_text": "Find where a word comes from.",
+  "tut3_title": "Community", "tut3_text": "Add words and share collections.",
+  "lang_label": "Language", "theme_toggle": "Toggle theme"
+}

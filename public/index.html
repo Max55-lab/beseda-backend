@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F7F1E6" />
+    <meta
+      name="description"
+      content="Beseda — audio-rječnik hrvatskih mjesnih govora. Čuj, nađi i nauči riječi zavičaja."
+    />
+    <link rel="manifest" href="/manifest.webmanifest" />
+  <title>Beseda — rječnik zavičaja</title>
+    <script type="module" crossorigin src="/assets/index-DvsaejEv.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-ByVpUa8s.css">
+  </head>
+  <body>
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("beseda:tema") === "tamna") {
+            document.documentElement.dataset.tema = "tamna";
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <div id="loading" style="position:fixed;inset:0;background:#f7f1e6;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .4s;">
+      <svg width="80" height="80" viewBox="0 0 128 128">
+        <rect width="128" height="128" rx="24" fill="#f7f1e6" stroke="#c0573b" stroke-width="3"/>
+        <text x="64" y="90" font-family="Georgia,serif" font-size="72" font-weight="700" text-anchor="middle" fill="#231a2b">b</text>
+        <circle cx="96" cy="34" r="10" fill="#c0573b"/>
+      </svg>
+      <p style="font-family:Georgia,serif;font-size:20px;color:#231a2b;margin-top:12px;">beseda.</p>
+      <p style="font-size:12px;color:#6f6270;">Učitavanje…</p>
+    </div>
+    <div id="root"></div>
+  </body>
+</html>

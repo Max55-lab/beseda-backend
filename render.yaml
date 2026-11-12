@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: beseda-api
+    name: beseda
     runtime: node
     plan: free
     buildCommand: npm install
@@ -12,6 +12,8 @@ services:
         generateValue: true
       - key: DB_PATH
         value: /data/beseda.db
+      - key: NODE_VERSION
+        value: "22"
     disk:
       name: beseda-data
       mountPath: /data

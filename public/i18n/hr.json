@@ -1,0 +1,20 @@
+{
+  "app_title": "Beseda — rječnik zavičaja",
+  "app_subtitle": "Audio-rječnik hrvatskih mjesnih govora",
+  "nav_home": "Početna", "nav_map": "Karta", "nav_dict": "Rječnik", "nav_compare": "Usporedba",
+  "nav_quiz": "Kviz", "nav_flashcards": "Kartice", "nav_collections": "Zbirke",
+  "nav_stats": "Statistika", "nav_data": "Podaci", "nav_community": "Zajednica",
+  "nav_add": "Dodaj riječ", "nav_standard": "Standardni rječnik",
+  "home_title": "Rječnik zavičaja", "home_lead": "Svaka riječ ima svoje mjesto, svoj glas i svoju priču.",
+  "search_placeholder": "Traži riječ, selo ili pojam…", "search_btn": "Traži",
+  "word_of_day": "Riječ dana", "listen": "Poslušaj", "meaning": "Značenje",
+  "example": "Primjer", "standard": "Standardno", "english": "Engleski",
+  "source": "Izvor", "check": "Provjeri", "save": "Spremi", "delete": "Obriši",
+  "loading": "Učitavanje…", "no_words": "Nema riječi.", "error": "Greška",
+  "welcome_title": "Dobrodošli u Besedu", "welcome_subtitle": "Odaberi svoj maternji jezik",
+  "tutorial_skip": "Preskoči", "tutorial_next": "Dalje", "tutorial_done": "Započni",
+  "tut1_title": "Rječnik", "tut1_text": "Traži riječ, poslušaj izgovor, pročitaj značenje.",
+  "tut2_title": "Karta", "tut2_text": "Pronađi odakle riječ potječe.",
+  "tut3_title": "Zajednica", "tut3_text": "Dodaj riječi i dijeli zbirke.",
+  "lang_label": "Jezik", "theme_toggle": "Promijeni temu"
+}
