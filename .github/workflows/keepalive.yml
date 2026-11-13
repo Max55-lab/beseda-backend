@@ -20,7 +20,9 @@ permissions:
 
 concurrency:
   group: beseda-keepalive
-  cancel-in-progress: false
+  # Replace the running keep-alive job with the newest one (there is no gap
+  # longer than a few seconds, well below Render's 15-minute idle timeout).
+  cancel-in-progress: true
 
 jobs:
   ping:
@@ -33,6 +35,8 @@ jobs:
           end=$((SECONDS + 20400)) # 340 minutes
           while [ "$SECONDS" -lt "$end" ]; do
             code=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 90 \
+              -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" \
+              -H "Accept: application/json,text/plain,*/*" \
               https://beseda.onrender.com/api/health || true)
             echo "$(date -u +%FT%TZ) health=$code"
             sleep 240
