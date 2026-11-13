@@ -1,0 +1,34 @@
+# Render Free web services answer /robots.txt with "Disallow: /" while spun down.
+# This workflow pings /api/health every 4 minutes so the service never reaches
+# the 15-minute idle timeout.
+# https://render.com/docs/free#automatic-robots-txt-responses
+name: Keep Beseda awake
+
+on:
+  schedule:
+    # Start a long-running keep-alive job every 4 hours.
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: beseda-keepalive
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    # GitHub's maximum job duration is 6 hours. Stay below it.
+    timeout-minutes: 355
+    steps:
+      - name: Ping /api/health every 4 minutes
+        run: |
+          end=$((SECONDS + 20400)) # 340 minutes
+          while [ "$SECONDS" -lt "$end" ]; do
+            code=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 90 \
+              https://beseda.onrender.com/api/health || true)
+            echo "$(date -u +%FT%TZ) health=$code"
+            sleep 240
+          done
