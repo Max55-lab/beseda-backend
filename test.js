@@ -52,6 +52,25 @@ const del = (p, t) => request("DELETE", p, null, t);
   check("frontend 200", home.status === 200);
   check("frontend has root", home.body.includes('id="root"'));
 
+  // SEO: robots.txt must allow crawling
+  const robots = await get("/robots.txt");
+  check("robots 200", robots.status === 200);
+  check("robots allows /", robots.body.includes("Allow: /"));
+  check("robots blocks only /api", !robots.body.includes("Disallow: /\n") && robots.body.includes("Disallow: /api/"));
+  check("robots has sitemap", robots.body.includes("Sitemap: https://beseda.onrender.com/sitemap.xml"));
+
+  // SEO: sitemap must use clean URLs (no #/)
+  const sitemap = await get("/sitemap.xml");
+  check("sitemap 200", sitemap.status === 200);
+  check("sitemap has no hash URLs", !sitemap.body.includes("#/"));
+  check("sitemap has homepage", sitemap.body.includes("<loc>https://beseda.onrender.com/</loc>"));
+
+  // SPA fallback for clean URLs
+  const karta = await get("/karta");
+  check("clean URL /karta serves app", karta.status === 200 && karta.body.includes('id="root"'));
+  const rijeka = await get("/rjecnik/skoda");
+  check("clean URL /rjecnik/skoda serves app", rijeka.status === 200 && rijeka.body.includes('id="root"'));
+
   // auth flow
   const username = "testuser_" + Date.now();
   const reg = await post("/api/auth/register", { username, password: "test123" });
