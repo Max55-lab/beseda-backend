@@ -1,4 +1,4 @@
-const CACHE = "beseda-v2";
+const CACHE = "beseda-v3";
 const ASSETS = ["/", "/index.html", "/icon.svg", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {
@@ -22,16 +22,17 @@ self.addEventListener("fetch", (event) => {
   if (req.method !== "GET") return;
 
   const url = new URL(req.url);
-  // Ne diraj API ni druge domene.
+  // Ne diraj API, robots.txt, sitemap ni druge domene.
   if (url.origin !== self.location.origin) return;
   if (url.pathname.startsWith("/api/")) return;
+  if (url.pathname === "/robots.txt" || url.pathname === "/sitemap.xml") return;
 
   // Navigacija: uvijek pokušaj mrežu, a offline vrati keširani index.html.
-  if (req.mode === "navigate") {
+  if (req.mode === "navigate" && (req.headers.get("accept") || "").includes("text/html")) {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          if (res && res.status === 200) {
+          if (res && res.status === 200 && (res.headers.get("content-type") || "").includes("text/html")) {
             const clone = res.clone();
             caches.open(CACHE).then((c) => c.put("/index.html", clone));
           }
