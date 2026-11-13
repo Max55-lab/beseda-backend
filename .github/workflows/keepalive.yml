@@ -5,9 +5,14 @@
 name: Keep Beseda awake
 
 on:
+  # Start a keep-alive run immediately whenever this file changes.
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/keepalive.yml"
   schedule:
-    # Start a long-running keep-alive job every 4 hours.
-    - cron: "0 */4 * * *"
+    # Start a long-running keep-alive job every hour.
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 permissions:
