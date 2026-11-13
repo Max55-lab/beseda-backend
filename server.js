@@ -212,7 +212,8 @@ if (frontendPath) {
     res.type("text/plain");
     res.set("Cache-Control", "no-store, max-age=0");
     res.send(
-      "User-agent: *\n" +
+      "# Beseda robots.txt v2 — 2026-11-13\n" +
+        "User-agent: *\n" +
         "Allow: /\n" +
         "Disallow: /api/\n\n" +
         "User-agent: Googlebot\n" +
