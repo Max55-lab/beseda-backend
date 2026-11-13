@@ -1,3 +1,14 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+
+# Googlebot smije indeksirati sve javne stranice.
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
 Sitemap: https://beseda.onrender.com/sitemap.xml
